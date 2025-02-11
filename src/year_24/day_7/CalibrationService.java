@@ -2,38 +2,30 @@ package year_24.day_7;
 
 import puzzle_input.PuzzleInput_24_7;
 
-import javax.script.ScriptException;
+import java.math.BigInteger;
 import java.util.*;
 
 public class CalibrationService {
-
-    //https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 
     public void calibration() {
         String puzzleInput = new PuzzleInput_24_7().getPuzzleInputTest();
 
         List<String> inputs = puzzleInput.lines().toList();
-        Map<Integer, Integer[]> mapInput = new HashMap<>();
+        Map<BigInteger, List<Integer>> mapInput = new HashMap<>();
 
-        List<Integer> goodCalibration = new ArrayList<>();
+        // Transform input to map with result and value list of number to calculate
         inputs.forEach(input -> {
             String[] splitInput = input.split(":");
 
-            Integer key = Integer.parseInt(splitInput[0].trim());
-            Integer[] values = Arrays.stream(splitInput[1].trim().split(" "))
-                    .map(Integer::parseInt).toArray(Integer[]::new);
+            BigInteger key = new BigInteger(splitInput[0].trim());
+            List<Integer> values = Arrays.stream(splitInput[1].trim().split(" "))
+                    .map(Integer::parseInt).toList();
             mapInput.put(key, values);
+            System.out.println("key " + key + " values " + values.toString());
 
-//            if (Objects.equals(key, Arrays.stream(values).reduce(0, Integer::sum))) {
-//                goodCalibration.add(key);
-//            } else if (Objects.equals(key, Arrays.stream(values).reduce(1, (a, b) -> a * b))) {
-//                goodCalibration.add(key);
-//            }
-            try {
-                testCalibration(key, values);
-            } catch (ScriptException e) {
-                throw new RuntimeException(e);
-            }
+            List<String> expressions = generateExpressions(values);
+            System.out.println(expressions);
+
 
         });
 
@@ -42,66 +34,43 @@ public class CalibrationService {
 
     }
 
-    private boolean testCalibration(Integer key, Integer[] values) throws ScriptException {
-        boolean result = false;
+    public static void main(String[] args) {
+        List<Integer> values = List.of(1, 2, 3);
+        List<String> expressions = generateExpressions(values);
+        System.out.println(expressions);
+        List<Integer> values2 = List.of(1, 2, 3, 4, 5);
+        List<String> expressions2 = generateExpressions(values2);
+        System.out.println(expressions2);
+        List<Integer> values3 = List.of(1, 2);
+        List<String> expressions3 = generateExpressions(values3);
+        System.out.println(expressions3);
+    }
 
-//        ScriptEngineManager mgr = new ScriptEngineManager();
-//        ScriptEngine engine = mgr.getEngineByName("JavaScript");
-//        String foo = "40+2";
-//        System.out.println(engine.eval(foo));
+    public static List<String> generateExpressions(List<Integer> values) {
+        List<String> result = new ArrayList<>();
 
-//        List<Character> operators = List.of('+', '*');
-//
-//        int numberOfPossibilities = operators.size() + operators.size() * (values.length - 1);
-//
-//        for (int i = 0; i < numberOfPossibilities; i++) {
-//
-//            // Arrays.stream(values).reduce(0, (a,b) -> );
-//        }
+        // Cas de base : si la liste a un seul élément, aucun opérateur à ajouter
+        if (values.size() == 1) {
+            result.add(String.valueOf(values.get(0)));
+            return result;
+        }
 
-        char[] operators = {'*', '+'};
-        int r = values.length - 1;
-        int n = operators.length;
-        printCombination(operators, n, r);
+        // Premier élément de la liste
+        int first = values.get(0);
+
+        // Récupérer le reste de la liste
+        List<Integer> remaining = values.subList(1, values.size());
+
+        // Récursivement générer toutes les combinaisons pour le reste
+        List<String> subExpressions = generateExpressions(remaining);
+
+        // Ajouter '+' et '*' entre le premier élément et chaque sous-expression
+        for (String subExp : subExpressions) {
+            result.add(first + "+" + subExp);
+            result.add(first + "*" + subExp);
+        }
 
         return result;
     }
-
-    /* arr[]  ---> Input Array
-    data[] ---> Temporary array to store current combination
-    start & end ---> Starting and Ending indexes in arr[]
-    index  ---> Current index in data[]
-    r ---> Size of a combination to be printed */
-    static void combinationUtil(char[] arr, char[] data, int start,
-                                int end, int index, int r) {
-        // Current combination is ready to be printed, print it
-        if (index == r) {
-            for (int j = 0; j < r; j++) {
-                System.out.print(data[j] + " ");
-            }
-            System.out.println("");
-            return;
-        }
-
-        // replace index with all possible elements. The condition
-        // "end-i+1 >= r-index" makes sure that including one element
-        // at index will make a combination with remaining elements
-        // at remaining positions
-        for (int i = start; i <= end && end - i + 1 >= r - index; i++) {
-            data[index] = arr[i];
-            combinationUtil(arr, data, i + 1, end, index + 1, r);
-        }
-    }
-
-    // The main function that prints all combinations of size r
-    // in arr[] of size n. This function mainly uses combinationUtil()
-    static void printCombination(char[] arr, int n, int r) {
-        // A temporary array to store all combination one by one
-        char[] data = new char[r];
-
-        // Print all combination using temporary array 'data[]'
-        combinationUtil(arr, data, 0, n - 1, 0, r);
-    }
-
 
 }
