@@ -8,6 +8,10 @@ import year_24.day_3.RegexService;
 import year_24.day_4.XMASService;
 import year_24.day_5.ProtocolService;
 import year_24.day_7.Test;
+import year_24.day_8.PatrolService2;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Main {
 
@@ -15,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello world!");
-        year24Day5();
+        year24Day6();
     }
 
     private static void year21Day8() {
@@ -61,6 +65,16 @@ public class Main {
         protocolService.day245();
     }
 
+    private static void year24Day6() {
+        PatrolService2 patrolService = new PatrolService2();
+        try {
+            patrolService.patrol2();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static void year24Day7() {
 //        CalibrationService calibrationService = new CalibrationService();
