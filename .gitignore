@@ -33,4 +33,5 @@ bin/
 advent_of_code.iml
 
 ### puzzle input ###
-/src/puzzle_input/
+/src/main/resources/puzzle_input/
+/src/test/resources/puzzle_input/

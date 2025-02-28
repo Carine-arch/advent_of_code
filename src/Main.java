@@ -1,14 +1,15 @@
-import puzzle_input.PuzzleInput_21_8;
-import year_21.day_8.ISegmentService;
-import year_21.day_8.SegmentService;
-import year_22.day_8.TreeService;
-import year_24.day_1.LocationService;
-import year_24.day_2.ReportService;
-import year_24.day_3.RegexService;
-import year_24.day_4.XMASService;
-import year_24.day_5.ProtocolService;
-import year_24.day_7.Test;
-import year_24.day_8.PatrolService2;
+import main.java.day_8.ISegmentService;
+import main.java.day_8.SegmentService;
+import main.java.day_8.TreeService;
+import main.java.year_24.day_1.LocationService;
+import main.java.year_24.day_2.ReportService;
+import main.java.year_24.day_3.RegexService;
+import main.java.year_24.day_4.XMASService;
+import main.java.year_24.day_5.ProtocolService;
+import main.java.year_24.day_7.Test;
+import main.java.year_24.day_8.EasterEggService;
+import main.java.year_24.day_8.PatrolService2;
+import main.resources.puzzle_input.PuzzleInput_21_8;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello world!");
-        year24Day6();
+        year24Day8();
     }
 
     private static void year21Day8() {
@@ -81,6 +82,18 @@ public class Main {
 //        calibrationService.calibration();
         Test test = new Test();
         test.main(null);
+    }
+
+    private static void year24Day8() {
+        EasterEggService easterEggService = new EasterEggService();
+        try {
+            easterEggService.part1();
+            easterEggService.part2();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
