@@ -4,70 +4,89 @@ import main.resources.puzzle_input.PuzzleInput_24_7;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CalibrationService {
 
     public void calibration() {
-        String puzzleInput = new PuzzleInput_24_7().getPuzzleInputTest();
+        String puzzleInput = new PuzzleInput_24_7().getPuzzleInput();
 
         List<String> inputs = puzzleInput.lines().toList();
-        Map<BigInteger, List<Integer>> mapInput = new HashMap<>();
+        Set<BigInteger> results = new HashSet<>();
 
         // Transform input to map with result and value list of number to calculate
         inputs.forEach(input -> {
             String[] splitInput = input.split(":");
 
             BigInteger key = new BigInteger(splitInput[0].trim());
-            List<Integer> values = Arrays.stream(splitInput[1].trim().split(" "))
-                    .map(Integer::parseInt).toList();
-            mapInput.put(key, values);
+            List<BigInteger> values = Arrays.stream(splitInput[1].trim().split(" "))
+                    .map(BigInteger::new).collect(Collectors.toList());
             System.out.println("key " + key + " values " + values.toString());
 
-            List<String> expressions = generateExpressions(values);
+            //Reverse values to not take in count precedence
+            Collections.reverse(values);
+            List<BigInteger> expressions = generateExpressions(values);
             System.out.println(expressions);
 
-
+            expressions.forEach(expression -> {
+                if (Objects.equals(expression, key)) {
+                    results.add(expression);
+                }
+            });
         });
-
-
-        // inputs.stream().reduce(0,Integer::sum);
-
+        BigInteger sum = results.stream().reduce(BigInteger.ZERO, BigInteger::add);
+        System.out.println("totalCalibration " + sum);
     }
 
-    public static void main(String[] args) {
-        List<Integer> values = List.of(1, 2, 3);
-        List<String> expressions = generateExpressions(values);
-        System.out.println(expressions);
-        List<Integer> values2 = List.of(1, 2, 3, 4, 5);
-        List<String> expressions2 = generateExpressions(values2);
-        System.out.println(expressions2);
-        List<Integer> values3 = List.of(1, 2);
-        List<String> expressions3 = generateExpressions(values3);
-        System.out.println(expressions3);
-    }
+//    public static List<String> generateExpressions(List<Integer> values) {
+//        List<String> result = new ArrayList<>();
+//
+//        // Cas de base : si la liste a un seul élément, aucun opérateur à ajouter
+//        if (values.size() == 1) {
+//            result.add(String.valueOf(values.get(0)));
+//            return result;
+//        }
+//
+//        // Premier élément de la liste
+//        int first = values.get(0);
+//
+//        // Récupérer le reste de la liste
+//        List<Integer> remaining = values.subList(1, values.size());
+//
+//        // Récursivement générer toutes les combinaisons pour le reste
+//        List<String> subExpressions = generateExpressions(remaining);
+//
+//        // Ajouter '+' et '*' entre le premier élément et chaque sous-expression
+//        for (String subExp : subExpressions) {
+//            result.add(first + "+" + subExp);
+//            result.add(first + "*" + subExp);
+//        }
+//
+//        return result;
+//    }
 
-    public static List<String> generateExpressions(List<Integer> values) {
-        List<String> result = new ArrayList<>();
+    public static List<BigInteger> generateExpressions(List<BigInteger> values) {
+        List<BigInteger> result = new ArrayList<>();
 
         // Cas de base : si la liste a un seul élément, aucun opérateur à ajouter
         if (values.size() == 1) {
-            result.add(String.valueOf(values.get(0)));
+            result.add(values.get(0));
             return result;
         }
 
         // Premier élément de la liste
-        int first = values.get(0);
+        BigInteger first = values.get(0);
 
         // Récupérer le reste de la liste
-        List<Integer> remaining = values.subList(1, values.size());
+        List<BigInteger> remaining = values.subList(1, values.size());
 
         // Récursivement générer toutes les combinaisons pour le reste
-        List<String> subExpressions = generateExpressions(remaining);
+        List<BigInteger> subResults = generateExpressions(remaining);
 
-        // Ajouter '+' et '*' entre le premier élément et chaque sous-expression
-        for (String subExp : subExpressions) {
-            result.add(first + "+" + subExp);
-            result.add(first + "*" + subExp);
+        // Ajouter les résultats pour '+' et '*' entre le premier élément et chaque sous-résultat
+        for (BigInteger subRes : subResults) {
+            result.add(first.add(subRes)); // Addition
+            result.add(first.multiply(subRes)); // Multiplication
         }
 
         return result;

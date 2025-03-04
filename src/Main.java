@@ -6,7 +6,7 @@ import main.java.year_24.day_2.ReportService;
 import main.java.year_24.day_3.RegexService;
 import main.java.year_24.day_4.XMASService;
 import main.java.year_24.day_5.ProtocolService;
-import main.java.year_24.day_7.Test;
+import main.java.year_24.day_7.CalibrationService;
 import main.java.year_24.day_8.EasterEggService;
 import main.java.year_24.day_8.PatrolService2;
 import main.resources.puzzle_input.PuzzleInput_21_8;
@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello world!");
-        year24Day8();
+        year24Day7();
     }
 
     private static void year21Day8() {
@@ -78,10 +78,8 @@ public class Main {
     }
 
     private static void year24Day7() {
-//        CalibrationService calibrationService = new CalibrationService();
-//        calibrationService.calibration();
-        Test test = new Test();
-        test.main(null);
+        CalibrationService calibrationService = new CalibrationService();
+        calibrationService.calibration();
     }
 
     private static void year24Day8() {
