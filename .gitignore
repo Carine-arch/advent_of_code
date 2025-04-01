@@ -35,3 +35,7 @@ advent_of_code.iml
 ### puzzle input ###
 /src/main/resources/puzzle_input/
 /src/test/resources/puzzle_input/
+
+### mvn ###
+/src/main/resources/META-INF
+target/

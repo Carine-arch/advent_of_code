@@ -1,11 +1,9 @@
-package main.java.year_24.day_8;
+package year_24.day_8;
 
-import main.java.utils.Matrice;
-import main.java.utils.Position;
-import main.java.utils.PuzzleInputUtils;
+import utils.Matrice;
+import utils.Position;
+import utils.PuzzleInputUtils;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -17,11 +15,11 @@ public class EasterEggService {
     final static String EMPTY = ".";
     final static String ANTINODE = "#";
 
-    public void part1() throws URISyntaxException, IOException {
-        List<String> puzzleInputTest = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/puzzle_input_y24_d8_test");
+    public int part1(String fileName) {
+        List<String> puzzleInputTest = PuzzleInputUtils.getLinesFromFile(fileName);
 
         // créer une matrice avec le puzzle
-        Matrice matrice = new PuzzleInputUtils().transformInputToMatrice(puzzleInputTest);
+        Matrice matrice = PuzzleInputUtils.transformInputToMatrice(puzzleInputTest);
 
         // récupérer dans la matrice toutes les positions qui ont une antenne
         List<Position> antennaPositions = matrice.positions().stream().filter(position -> !position.value().equals(EMPTY)).toList();
@@ -47,14 +45,14 @@ public class EasterEggService {
             });
         });
 
-        System.out.println("Antinodes: " + antinodes.size());
+        return antinodes.size();
     }
 
-    public void part2() throws URISyntaxException, IOException {
-        List<String> puzzleInputTest = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/puzzle_input_y24_d8");
+    public int part2(String fileName) {
+        List<String> puzzleInputTest = PuzzleInputUtils.getLinesFromFile(fileName);
 
         // créer une matrice avec le puzzle
-        Matrice matrice = new PuzzleInputUtils().transformInputToMatrice(puzzleInputTest);
+        Matrice matrice = PuzzleInputUtils.transformInputToMatrice(puzzleInputTest);
 
         // récupérer dans la matrice toutes les positions qui ont une antenne
         List<Position> antennaPositions = matrice.positions().stream().filter(position -> !position.value().equals(EMPTY)).toList();
@@ -80,7 +78,7 @@ public class EasterEggService {
             });
         });
 
-        System.out.println("Antinodes: " + antinodes.size());
+        return antinodes.size();
     }
 
     public Map<String, List<Position>> groupAntennaPositionsByValue(List<Position> antennaPositions) {

@@ -1,4 +1,4 @@
-package main.java.year_24.day_2;
+package year_24.day_2;
 
 import java.util.List;
 

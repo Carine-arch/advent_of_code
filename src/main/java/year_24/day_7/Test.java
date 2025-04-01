@@ -1,4 +1,4 @@
-package main.java.year_24.day_7;
+package year_24.day_7;
 
 public class Test {
 

@@ -1,31 +1,19 @@
-package main.java.day_8;
+package year_22.day_8;
 
-import main.resources.puzzle_input.PuzzleInput_22_8;
+import utils.PuzzleInputUtils;
 
 import java.util.List;
 
 public class TreeService {
 
     public void resolve() {
-        int[][] treePatch = transformInputToMatrice();
+        List<String> puzzleInput = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/puzzle_input_y22_d8_test");
+        int[][] treePatch = PuzzleInputUtils.transformInputToDoubleArray(puzzleInput);
         countVisibleTree(treePatch);
         findBestSpotScore(treePatch);
 
         // part 1 result = 1807
         // part 2 result = 480000
-    }
-
-    private int[][] transformInputToMatrice() {
-        List<String> input = new PuzzleInput_22_8().getPuzzleInput();
-        int[][] matrice = new int[input.size()][input.get(0).length()];
-
-        for (int lineIndex = 0; lineIndex < input.size(); lineIndex++) {// line
-            String line = input.get(lineIndex);
-            for (int colIndex = 0; colIndex < line.length(); colIndex++) {//column
-                matrice[lineIndex][colIndex] = Integer.parseInt(line.split("")[colIndex]);
-            }
-        }
-        return matrice;
     }
 
     private void countVisibleTree(int[][] treePatch) {

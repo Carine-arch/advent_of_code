@@ -1,6 +1,6 @@
-package main.java.year_24.day_2;
+package year_24.day_2;
 
-import main.resources.puzzle_input.PuzzleInput_24_2;
+import utils.PuzzleInputUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +12,8 @@ public class ReportService {
 
 
     public void countSafeReport() {
-        String puzzleInput = new PuzzleInput_24_2().getPuzzleInput();
-        List<String> lines = puzzleInput.lines().toList();
+        List<String> lines = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/year_24_day_2_test");
+
 
         int numberOfSafeReport = 0;
         for (String line : lines) {

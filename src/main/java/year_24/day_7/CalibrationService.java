@@ -1,6 +1,6 @@
-package main.java.year_24.day_7;
+package year_24.day_7;
 
-import main.resources.puzzle_input.PuzzleInput_24_7;
+import utils.PuzzleInputUtils;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -9,9 +9,7 @@ import java.util.stream.Collectors;
 public class CalibrationService {
 
     public void calibration() {
-        String puzzleInput = new PuzzleInput_24_7().getPuzzleInput();
-
-        List<String> inputs = puzzleInput.lines().toList();
+        List<String> inputs = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/year_24_day_7_test");
         Set<BigInteger> results = new HashSet<>();
 
         // Transform input to map with result and value list of number to calculate

@@ -1,16 +1,14 @@
-package main.java.year_24.day_5;
-
-import main.resources.puzzle_input.PuzzleInput_24_5;
+package year_24.day_5;
 
 import java.util.*;
 
 public class ProtocolServiceTest {
     public void day245() {
-        PuzzleInput_24_5 puzzleInput245 = new PuzzleInput_24_5();
-        String rules = puzzleInput245.getPuzzleInputRules();
-        String results = puzzleInput245.getPuzzleInputResult();
-
-        countOrdered(rules, results);
+//        PuzzleInput_24_5 puzzleInput245 = new PuzzleInput_24_5();
+//        String rules = puzzleInput245.getPuzzleInputRules();
+//        String results = puzzleInput245.getPuzzleInputResult();
+//
+//        countOrdered(rules, results);
 
         // part 1 : 6041
 

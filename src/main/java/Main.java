@@ -1,15 +1,15 @@
-import main.java.day_8.ISegmentService;
-import main.java.day_8.SegmentService;
-import main.java.day_8.TreeService;
-import main.java.year_24.day_1.LocationService;
-import main.java.year_24.day_2.ReportService;
-import main.java.year_24.day_3.RegexService;
-import main.java.year_24.day_4.XMASService;
-import main.java.year_24.day_5.ProtocolService;
-import main.java.year_24.day_7.CalibrationService;
-import main.java.year_24.day_8.EasterEggService;
-import main.java.year_24.day_8.PatrolService2;
-import main.resources.puzzle_input.PuzzleInput_21_8;
+import year_15.day_9.SantaFacteurService;
+import year_21.day_8.ISegmentService;
+import year_21.day_8.SegmentService;
+import year_22.day_8.TreeService;
+import year_24.day_1.LocationService;
+import year_24.day_2.ReportService;
+import year_24.day_3.RegexService;
+import year_24.day_4.XMASService;
+import year_24.day_5.ProtocolService;
+import year_24.day_6.PatrolService2;
+import year_24.day_7.CalibrationService;
+import year_24.day_8.EasterEggService;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello world!");
-        year24Day7();
+        year15Day9();
     }
 
     private static void year21Day8() {
@@ -30,7 +30,7 @@ public class Main {
         //result part 1 : 534
         //segmentService.test(new HashSet<>(Arrays.asList("fdeba beagfd gbafe dagb dbf ecfad bd dgcaefb fbecgd abfecg | dgba dfb ecadf bdf")));
 
-        segmentService.test(new PuzzleInput_21_8().getPuzzleInput());
+//        segmentService.test(new PuzzleInput_21_8().getPuzzleInput());
 
         //result part 2 : 1070188
     }
@@ -84,14 +84,13 @@ public class Main {
 
     private static void year24Day8() {
         EasterEggService easterEggService = new EasterEggService();
-        try {
-            easterEggService.part1();
-            easterEggService.part2();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        easterEggService.part1("src/main/resources/puzzle_input/puzzle_input_y24_d8_test");
+        easterEggService.part2("src/main/resources/puzzle_input/puzzle_input_y24_d8_test");
+    }
+
+    private static void year15Day9() {
+        SantaFacteurService santaFacteurService = new SantaFacteurService();
+        santaFacteurService.part1("src/main/resources/puzzle_input/year_15_day_9_test");
     }
 
 

@@ -1,6 +1,6 @@
-package main.java.year_24.day_8;
+package year_24.day_6;
 
-import main.java.utils.*;
+import utils.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

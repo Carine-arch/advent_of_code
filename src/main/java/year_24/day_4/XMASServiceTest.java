@@ -1,6 +1,6 @@
-package main.java.year_24.day_4;
+package year_24.day_4;
 
-import main.resources.puzzle_input.PuzzleInput_24_4;
+import utils.PuzzleInputUtils;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class XMASServiceTest {
     }
 
     private Character[][] transformInputToMatrice() {
-        List<String> input = new PuzzleInput_24_4().getPuzzleInput().lines().toList();
+        List<String> input = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/puzzle_input_24_4.txt");
         Character[][] matrice = new Character[input.size()][input.get(0).length()];
 
         for (int lineIndex = 0; lineIndex < input.size(); lineIndex++) {// line

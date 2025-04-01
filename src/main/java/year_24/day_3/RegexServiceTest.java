@@ -1,6 +1,6 @@
-package main.java.year_24.day_3;
+package year_24.day_3;
 
-import main.resources.puzzle_input.PuzzleInput_24_3;
+import utils.PuzzleInputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class RegexServiceTest {
 
     public void cleanComputerProgram() {
-        String puzzleInput = new PuzzleInput_24_3().getPuzzleInput2();
+        String puzzleInput = PuzzleInputUtils.getStringFromFile("src/main/resources/puzzle_input/year_24_day_3_test");
 
         String input = puzzleInput.lines().collect(Collectors.joining());
 

@@ -1,6 +1,6 @@
-package main.java.year_24.day_3;
+package year_24.day_3;
 
-import main.resources.puzzle_input.PuzzleInput_24_3;
+import utils.PuzzleInputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class RegexService {
     // https://fr.javascript.info/regexp-lookahead-lookbehind
 
     public void cleanComputerProgram() {
-        String puzzleInput = new PuzzleInput_24_3().getPuzzleInput();
+        String puzzleInput = PuzzleInputUtils.getStringFromFile("src/main/resources/puzzle_input/year_24_day_3_test");
 
         String regexDont = "don't\\(\\)(?:(?!do\\(\\)).)+do\\(\\)|don't\\(\\).*$";
 

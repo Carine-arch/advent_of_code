@@ -1,6 +1,6 @@
-package main.java.year_24.day_1;
+package year_24.day_1;
 
-import main.resources.puzzle_input.PuzzleInput_24_1;
+import utils.PuzzleInputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,8 @@ public class LocationService {
 
     public void countDistance() {
 
-        String puzzleInput = new PuzzleInput_24_1().getPuzzleInput();
+        List<String> lines = PuzzleInputUtils.getLinesFromFile("src/main/resources/puzzle_input/year_24_day_1_test");
 
-        List<String> lines = puzzleInput.lines().toList();
         List<String> column1 = new ArrayList<>();
         List<String> column2 = new ArrayList<>();
 

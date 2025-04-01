@@ -1,4 +1,4 @@
-package main.java.utils;
+package utils;
 
 public record OrientedPosition(Position position, DirectionEnum direction) {
 }
