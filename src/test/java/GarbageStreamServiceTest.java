@@ -7,7 +7,14 @@ public class GarbageStreamServiceTest {
 
     @Test
     public void partOneTest() {
-        Assert.assertEquals(1, garbageStreamService.part1("src/main/resources/puzzle_input/year_17_day_9_test"));
-        //System.out.println("Part 1: " + decompressCyberspaceService.part1("src/main/resources/puzzle_input/year_15_day_9"));
+        Assert.assertEquals(16, garbageStreamService.part1("src/main/resources/puzzle_input/year_17_day_9_test"));
+        System.out.println("Part 1: " + garbageStreamService.part1("src/main/resources/puzzle_input/year_17_day_9"));
+    }
+
+    @Test
+    public void partTwoTest() {
+        Assert.assertEquals(17, garbageStreamService.part2("src/main/resources/puzzle_input/year_17_day_9_test"));
+        System.out.println("Part 2: " + garbageStreamService.part2("src/main/resources/puzzle_input/year_17_day_9"));
+        // 9075 too high
     }
 }
